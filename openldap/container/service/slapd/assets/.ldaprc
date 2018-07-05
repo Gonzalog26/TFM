@@ -1,0 +1,2 @@
+TLS_CERT /container/service/slapd/assets/certs/ldap.crt
+TLS_KEY /container/service/slapd/assets/certs/ldap.key

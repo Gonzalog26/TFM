@@ -1,0 +1,36 @@
+version: '2.0'
+services:
+ vernemq:
+        restart: always
+        image: erlio/docker-vernemq:latest
+        hostname: vernemq
+        container_name: vernemq
+        volumes:
+             - /home/ubuntu/Desktop/TFM/MQTTMessageBrokers/vernemq/configuration:/etc/vernemq
+        ports:
+             - "1883:1883"
+             - "8888:8888"
+ #prometheus:
+        #restart: always
+        #image: prom/prometheus
+        #hostname: prometheus
+        #container_name: prometheus
+        #volumes:
+             #- /home/ubuntu/Desktop/TFM/MQTTMessageBrokers/vernemq/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+        #ports:
+             #- "9090:9090"
+        #links:
+             #- "vernemq"
+ #grafana:
+        #restart: always
+        #image: grafana/grafana:latest
+        #hostname: grafana
+        #container_name: grafana
+        #volumes:
+             #- /home/ubuntu/Desktop/TFM/MQTTMessageBrokers/vernemq/grafana/conf/grafana.ini:/etc/grafana/grafana.ini
+             #- /home/ubuntu/Desktop/TFM/MQTTMessageBrokers/vernemq/grafana/data/grafana.db:/var/lib/grafana/grafana.db
+        #ports:
+             #- "3000:3000"
+        #links:
+             #- "prometheus"
+ 

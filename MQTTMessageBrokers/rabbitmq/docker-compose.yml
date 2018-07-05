@@ -1,0 +1,32 @@
+version: "2"
+services:
+  rabbitmq:
+    restart: always
+    image: rabbitmq
+    hostname: rabbitmq
+    container_name: rabbitmq
+    volumes:
+      - /home/ubuntu/Desktop/TFM/MQTTMessageBrokers/rabbitmq/configuration:/etc/rabbitmq #config files: /etc/rabbitmq/rabbitmq.conf /etc/rabbitmq/advanced.config
+      - /var/lib/rabbit:/var/lib/rabbit #home dir: /var/lib/rabbitmq, database dir: /var/lib/rabbitmq/mnesia/rabbitmq
+      - /home/ubuntu/Desktop/TFM/Certificados/MQTTMessageBroker:/opt/rabbitmq/certificados #Certificado RabbitMQ
+      - /home/ubuntu/Desktop/TFM/Certificados/CA/cacert.pem:/opt/CA/cacert.pem #Certificado de la CA
+    ports:
+      - "8883:8883" #Puerto para conexiones MQTT over SSL
+      - "1883:1883" #Puerto para conexiones MQTT over TCP
+      - "15672:15672" #Puerto para conexiones a la UI de management
+    environment:
+      - RABBITMQ_NODENAME=rabbitmq #nodo rabbitmq_rabbitmq_1
+    links:
+      - "openldap:serverldap"
+  openldap:
+    restart: always
+    image: osixia/openldap 
+    hostname: openldap
+    container_name: openldap
+    volumes:
+      - /home/ubuntu/Desktop/TFM/openldap/slapd.d:/etc/ldap 
+      - /home/ubuntu/Desktop/TFM/openldap/ldap:/var/lib/ldap
+      - /home/ubuntu/Desktop/TFM/openldap/container:/container
+    ports:
+      - "389:389"
+      

@@ -1,0 +1,27 @@
+version: '2.0'
+services:
+ emq:
+        restart: always
+        image: machinedata/emq 
+        hostname: emq
+        container_name: emq
+        volumes:
+             - /home/ubuntu/Desktop/TFM/MQTTMessageBrokers/configuration/emq:/opt/emqttd/etc
+        ports:
+             - "1883:1883"
+             - "8883:8883"
+             - "18083:18083"
+        environment:
+             - EMQ_LOADED_PLUGINS="emq_auth_ldap,emq_recon,emq_modules,emq_retainer,emq_dashboard"
+ openldap:
+    restart: always
+    image: osixia/openldap
+    hostname: openldap
+    container_name: openldap
+    volumes:
+      - /home/ubuntu/Desktop/TFM/openldap/slapd.d:/etc/ldap
+      - /home/ubuntu/Desktop/TFM/openldap/ldap:/var/lib/ldap
+      - /home/ubuntu/Desktop/TFM/openldap/container:/container
+    ports:
+      - "389:389"
+
