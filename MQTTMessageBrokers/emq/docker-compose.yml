@@ -6,7 +6,7 @@ services:
         hostname: emq
         container_name: emq
         volumes:
-             - /home/ubuntu/Desktop/TFM/MQTTMessageBrokers/configuration/emq:/opt/emqttd/etc
+             - /home/ubuntu/Desktop/TFM/MQTTMessageBrokers/emq/configuration:/opt/emqttd/etc
         ports:
              - "1883:1883"
              - "8883:8883"
