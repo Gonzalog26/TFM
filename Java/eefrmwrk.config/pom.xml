@@ -1,0 +1,55 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>es.tekniker.eefrmwrk</groupId>
+  <artifactId>eefrmwrk.config</artifactId>
+  <version>${eefrmwrk.version}</version>
+  <name>Configuracion</name>
+  <dependencies>
+ 	<dependency>
+		<groupId>log4j</groupId>
+		<artifactId>log4j</artifactId>
+		<version>${log4j.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>commons-logging</groupId>
+		<artifactId>commons-logging</artifactId>
+		<version>${commonslogging.version}</version>
+	</dependency>
+  </dependencies>
+  
+  <properties>
+	<commonslogging.version>1.1.1</commonslogging.version>		
+	<log4j.version>1.2.14</log4j.version>
+	<eefrmwrk.version>0.0.5</eefrmwrk.version>
+  </properties>
+  
+  <build>
+  	<resources>
+  		<resource>
+  			<directory>./src/main/resources</directory>
+  		</resource>
+  	</resources>
+    <pluginManagement>
+      <plugins>
+      <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <configuration>
+            <source>1.7</source>
+            <target>1.7</target>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-eclipse-plugin</artifactId>
+          <configuration>
+            <projectNameTemplate>[artifactId]-[version]</projectNameTemplate>
+            <wtpmanifest>true</wtpmanifest>
+            <wtpapplicationxml>true</wtpapplicationxml>
+            <wtpversion>2.0</wtpversion>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+</project>
